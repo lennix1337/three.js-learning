@@ -78,6 +78,18 @@ function animate() {
   controls.update(); //used to reflect the changes to the DOM events by the mouse to update the camera
 
   renderer.render(scene, camera);
+
+  window.addEventListener("resize", onWindowResize);
+}
+
+function onWindowResize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(width, height);
 }
 
 animate();
