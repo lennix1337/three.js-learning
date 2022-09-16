@@ -67,11 +67,21 @@ Array(200).fill().forEach(addStar);
 const spaceTexture = new THREE.TextureLoader().load("cool.jpg");
 scene.background = spaceTexture;
 
+function moveCamera (){
+  const t = document.body.getBoundingClientRect().top;
+
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.position.y = t * -0.0002;
+}
+
+document.body.onscroll = moveCamera
+
 //loop to show the animation "game loop"
 function animate() {
   requestAnimationFrame(animate);
 
-  // torus.rotation.x += 0.01;
+  torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
 
